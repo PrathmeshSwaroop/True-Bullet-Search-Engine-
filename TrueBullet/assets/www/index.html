@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<script type="text/javascript" src="jquery.js" ></script>
+
+		<link rel="stylesheet" href="custom.css"/>
+		
+		<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
+
+		<script src="jquery.mobile.js"></script>
+
+		<script type="text/javascript" src="parseSearch.js"></script>
+		
+		<script>
+			$(document).ready(function() 
+			{
+				$("#about-btn").click(function()
+				{
+					$("#about").popup("open");
+				});
+				
+				
+				$("#search").bind("keyup", function() {
+					var key = "AIzaSyAQza3w9WnwxsnmSBeQfOa1U6U0Oe_UZDk";
+					var cx = "013070064662238656169:qhqma4sczsk";
+					var query = encodeURIComponent(document.getElementById("search").value);
+					var url = "https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&q=" + query;
+					$("div").parseSearchJson(url);
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		
+
+		<div data-role="page">
+			
+			
+			<!--popup for about -->
+			
+			
+			<div data-role="popup" id="about" data-overlay-theme="a" data-theme="a" class="ui-corner-all" data-dismissable="false">
+
+				<div data-role="header" data-theme="a" class="ui-corner-top">
+					<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
+					<h1>About</h1>
+				</div>
+				<div data-role="content" class="ui-corner-bottom ui-content" align="center" >
+			
+					Developed by - Gopi Krishna &amp; Prathmesh.
+					<br/>
+					Send your Feedbacks to <br/> vgk001@gmail.com or buddyprath@gmail.com
+				</div>
+			</div>
+			
+			
+			<!--header -->
+			
+			<div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+				<h4>SeaThru Search Engine</h4><a  id="about-btn" data-position-to="window" data-transition="pop" data-icon="star" class="ui-btn-right">About</a>
+				<div data-role="navbar">
+					
+							
+							<input type="search" name="search-2" id="search" value=""  title="Type your query terms in the search bar"  placeholder="Enter your query..."/>
+
+					<span > Search Results</span>
+				</div>
+
+			</div>
+
+			<div data-role="content" align="center" >
+
+				<br/>
+				<div id="result">
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+
+				</div>
+
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="a" class="foo">
+				<h4>&copy; All Rights Reserved </h4>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+
+	</body>
+</html>
